@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<title>Listado de Destinos</title>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/pasajeros">Servicio de Control de Destinos</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+					aria-controls="navbarNavAltMarkup" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-link active" aria-current="page" href="/pasajeros">Pasajeros</a> 
+						<a class="nav-link" href="/destinos">Destinos</a>
+						<a class="nav-link" href="/formularioPasajero">Agregar Pasajero</a> 
+						<a class="nav-link" href="/formularioDestino">Agregar Destino</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	<section>
+		<div class="container">
+			<h1 class="m-3">Listado de Destinos</h1>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Ciudad</th>
+						<th>País</th>
+						<th>Fecha</th>
+						<th>Pasajero</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="destino: ${destinos}">
+						<td th:text="${destino.ciudad}"></td>
+						<td th:text="${destino.pais}"></td>
+						<td th:text="${destino.fecha}"></td>
+						<td th:text="${destino.pasajero.nombre +' '+ destino.pasajero.apellido}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+	
+
+</body>
+</html>

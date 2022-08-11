@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<title>Agregar Destino</title>
+</head>
+<body>
+
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/pasajeros">Servicio de Control de Destinos</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+					aria-controls="navbarNavAltMarkup" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-link active" aria-current="page" href="/pasajeros">Pasajeros</a> 
+						<a class="nav-link" href="/destinos">Destinos</a>
+						<a class="nav-link" href="/formularioPasajero">Agregar Pasajero</a> 
+						<a class="nav-link" href="/formularioDestino">Agregar Destino</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+
+	<section>
+		<div class="container">
+			<h1 class="m-3">Agregar Destino</h1>
+			<div class="row col-8 d-flex justify-content-start">
+				<form th:action="@{/agregarDestino}" th:method="post"
+					th:object="${destino}">
+					<div class="mb-3">
+						<label class="form-label">Ciudad</label>
+						<input type="text" class="form-control" th:name="ciudad"
+							th:id="ciudad">
+					</div>
+					<div class="mb-3">
+						<label class="form-label">País</label>
+						<input type="text" class="form-control" th:name="pais"
+							th:id="pais">
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Fecha</label>
+						<input type="date" class="form-control" th:name="fecha"
+							th:id="fecha">
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Pasajero</label> <select
+							class="form-select" th:id="pasajero" th:name="pasajero">
+							<option th:each="pasajero: ${pasajeros}"
+								th:text="${pasajero.nombre +' '+ pasajero.apellido}"
+								th:value="${pasajero.id}"></option>
+						</select>
+					</div>
+
+					<div class="col-md-8 text-start mx-3">
+						<button class="btn btn-primary" type="submit">Agregar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	</body>
+</html>
